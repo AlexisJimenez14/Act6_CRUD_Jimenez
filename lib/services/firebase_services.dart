@@ -17,11 +17,18 @@ Future<List> getPeople() async {
 
   return people;
 }
-
+// guardar nombre
 Future<void> addPeople(String name) async {
   await db.collection("people").add({"name": name});
 }
-
+//actualizar nombre (editar un nombre)
 Future<void> updatePeople(String uid, String newName) async {
   await db.collection("people").doc(uid).set({"name": newName});
+}
+
+// borrar un nombre
+
+Future<void> deletePeople(String uid) async{
+  await db.collection("people").doc(uid).delete();
+
 }
